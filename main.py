@@ -66,6 +66,8 @@ with open('old_data.csv', 'r') as input_file:
                 
     dict = {'Faculty No': list_fac_no, 'Enrol. No': list_enr_no, 'Name': list_name, 'Branch': list_branch, 'Even_SPI': list_even_spi, 'CPI': list_cpi}
     df = pd.DataFrame(dict)
+    dr = df.reset_index()
+    df.index = df.index + 1
     df.to_csv('results_old.csv')
     
     input_file.close()
