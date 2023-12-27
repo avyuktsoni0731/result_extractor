@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 
 
  
-with open('old_data.csv', 'r') as input_file:
+with open('data_2023.csv', 'r') as input_file:
     reader = csv.reader(input_file)
     
     list_main = []
@@ -29,7 +29,7 @@ with open('old_data.csv', 'r') as input_file:
         driver.find_element(By.XPATH, "/html/body/div[2]/div/form/table/tbody/tr[2]/td/input").send_keys(j[1])
         driver.find_element(By.XPATH, "/html/body/div[2]/div/form/table/tbody/tr[5]/td/button").click()
         
-        with open ('results_old.csv', 'a+') as output_file:
+        with open ('results_2023.csv', 'a+') as output_file:
             writer = csv.writer(output_file)
             XPATH_FAC_NO = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/table[2]/tbody/tr[2]/td[1]").text
             XPATH_ENR_NO = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/table[2]/tbody/tr[2]/td[2]").text
@@ -68,7 +68,7 @@ with open('old_data.csv', 'r') as input_file:
     df = pd.DataFrame(dict)
     dr = df.reset_index()
     df.index = df.index + 1
-    df.to_csv('results_old.csv')
+    df.to_csv('results_2023.csv')
     
     input_file.close()
     output_file.close()
