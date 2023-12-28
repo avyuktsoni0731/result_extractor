@@ -1,4 +1,4 @@
-<h1 align="center">Result Extractor, ZHCET AMU</h1>
+<h1 align="center">Result Extractor</h1>
 
 # What it does?
 
