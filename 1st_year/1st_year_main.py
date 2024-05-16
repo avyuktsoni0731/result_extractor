@@ -6,7 +6,7 @@ from selenium.webdriver.common.alert import Alert
 
 
  
-with open('1st_year_data.csv', 'r') as input_file:
+with open('./1st_year_data.csv', 'r') as input_file:
     reader = csv.reader(input_file)
     
     list_main = []
@@ -67,9 +67,13 @@ with open('1st_year_data.csv', 'r') as input_file:
                 
     dict = {'Faculty No': list_fac_no, 'Enrol. No': list_enr_no, 'Name': list_name, 'Branch': list_branch, 'Odd_SPI': list_odd_spi, 'CPI': list_cpi}
     df = pd.DataFrame(dict)
-    dr = df.reset_index()
+    
+    
+    df.sort_values(by='CPI', ascending=False, inplace=True)
+    df.reset_index(inplace=True)
+    df.drop('index', axis='columns', inplace=True)
     df.index = df.index + 1
-    df.to_csv('1st_year_result.csv')
+    df.to_csv('1st_year_result_test.csv')
     print("Results have been extracted!")
     
     input_file.close()
