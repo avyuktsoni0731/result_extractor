@@ -51,7 +51,11 @@ with open('../branch_wise_list/computer.csv', 'r') as input_file:
             
     dict_COB = {'Faculty No': list_fac_no, 'Enrol. No': list_enr_no, 'Name': list_name, 'Branch': list_COB, 'ODD_SPI': list_odd_spi, 'CPI': list_cpi}
     df_COB = pd.DataFrame(dict_COB)
-    dr_COB = df_COB.reset_index()
+    
+    
+    df_COB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_COB.reset_index(inplace=True)
+    df_COB.drop('index', axis='columns', inplace=True)
     df_COB.index = df_COB.index + 1
     df_COB.to_csv('../branch_wise_result/2nd_year_COB_result.csv')
     

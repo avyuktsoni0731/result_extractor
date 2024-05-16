@@ -58,7 +58,9 @@ with open('../branch_wise_list/electronics.csv', 'r') as input_file:
     df_ELB = pd.DataFrame(dict_ELB)
     
     # reseting index and appending result to csv for each branch
-    dr_ELB = df_ELB.reset_index()
+    df_ELB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_ELB.reset_index(inplace=True)
+    df_ELB.drop('index', axis='columns', inplace=True)
     df_ELB.index = df_ELB.index + 1
     df_ELB.to_csv('../branch_wise_result/2nd_year_ELB_result.csv')
     

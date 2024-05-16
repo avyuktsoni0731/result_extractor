@@ -58,7 +58,9 @@ with open('../branch_wise_list/electrical.csv', 'r') as input_file:
     df_EEB = pd.DataFrame(dict_EEB)
     
     # reseting index and appending result to csv for each branch
-    dr_EEB = df_EEB.reset_index()
+    df_EEB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_EEB.reset_index(inplace=True)
+    df_EEB.drop('index', axis='columns', inplace=True)
     df_EEB.index = df_EEB.index + 1
     df_EEB.to_csv('../branch_wise_result/2nd_year_EEB_result.csv')
     

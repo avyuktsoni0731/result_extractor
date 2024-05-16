@@ -58,7 +58,9 @@ with open('../branch_wise_list/chemical.csv', 'r') as input_file:
     df_CHB = pd.DataFrame(dict_CHB)
     
     # reseting index and appending result to csv for each branch
-    dr_CHB = df_CHB.reset_index()
+    df_CHB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_CHB.reset_index(inplace=True)
+    df_CHB.drop('index', axis='columns', inplace=True)
     df_CHB.index = df_CHB.index + 1
     df_CHB.to_csv('../branch_wise_result/2nd_year_CHB_result.csv')
     

@@ -57,7 +57,9 @@ with open('../branch_wise_list/automobile.csv', 'r') as input_file:
     df_AEB = pd.DataFrame(dict_AEB)
     
     # reseting index and appending result to csv for each branch
-    dr_AEB = df_AEB.reset_index()
+    df_AEB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_AEB.reset_index(inplace=True)
+    df_AEB.drop('index', axis='columns', inplace=True)
     df_AEB.index = df_AEB.index + 1
     df_AEB.to_csv('../branch_wise_result/2nd_year_AEB_result.csv')
     

@@ -56,7 +56,9 @@ with open('../branch_wise_list/civil.csv', 'r') as input_file:
     df_CEB = pd.DataFrame(dict_CEB)
     
     # reseting index and appending result to csv for each branch
-    dr_CEB = df_CEB.reset_index()
+    df_CEB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_CEB.reset_index(inplace=True)
+    df_CEB.drop('index', axis='columns', inplace=True)
     df_CEB.index = df_CEB.index + 1
     df_CEB.to_csv('../branch_wise_result/2nd_year_CEB_result.csv')
     

@@ -58,8 +58,10 @@ with open('../branch_wise_list/food_tech.csv', 'r') as input_file:
     df_FTB = pd.DataFrame(dict_FTB)
     
     # reseting index and appending result to csv for each branch
-    dr_FTB = df_FTB.reset_index()
-    dr_FTB.index = df_FTB.index + 1
+    df_FTB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_FTB.reset_index(inplace=True)
+    df_FTB.drop('index', axis='columns', inplace=True)
+    df_FTB.index = df_FTB.index + 1
     df_FTB.to_csv('../branch_wise_result/2nd_year_FTB_result.csv')
     
     print("Results have been extracted!")

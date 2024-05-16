@@ -57,7 +57,9 @@ with open('../branch_wise_list/ai.csv', 'r') as input_file:
     df_AIB = pd.DataFrame(dict_AIB)
     
     # reseting index and appending result to csv for each branch
-    dr_AIB = df_AIB.reset_index()
+    df_AIB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_AIB.reset_index(inplace=True)
+    df_AIB.drop('index', axis='columns', inplace=True)
     df_AIB.index = df_AIB.index + 1
     df_AIB.to_csv('../branch_wise_result/2nd_year_AIB_result.csv')
     

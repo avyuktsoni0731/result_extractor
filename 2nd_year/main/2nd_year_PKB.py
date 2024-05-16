@@ -58,7 +58,9 @@ with open('../branch_wise_list/petrolium.csv', 'r') as input_file:
     df_PKB = pd.DataFrame(dict_PKB)
     
     # reseting index and appending result to csv for each branch
-    dr_PKB = df_PKB.reset_index()
+    df_PKB.sort_values(by='CPI', ascending=False, inplace=True)
+    df_PKB.reset_index(inplace=True)
+    df_PKB.drop('index', axis='columns', inplace=True)
     df_PKB.index = df_PKB.index + 1
     df_PKB.to_csv('../branch_wise_result/2nd_year_PKB_result.csv')
     
